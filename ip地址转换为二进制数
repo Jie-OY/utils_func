@@ -1,0 +1,32 @@
+def dec2bin(n):
+    """
+    十进制数转换成二进制数
+    :param n:
+    :return:
+    """
+    l = [0]*8
+    index = 7
+    # n = 2*a+b
+    a = 1
+    while a:
+        a, b = divmod(n, 2)
+        n = a
+        l[index] = b
+        index -= 1
+    return l
+
+
+def ip2bin(mask):
+    """
+    ip地址转换为二进制数
+    :param mask:
+    :return: string类型
+    """
+    l = list()
+    for i in mask:
+        l.extend(dec2bin(i))
+    return ''.join(str(j) for j in l)
+
+
+if __name__ == '__main__':
+    print(ip2bin([172,0,0,1]))
